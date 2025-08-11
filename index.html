@@ -7,21 +7,70 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 
+  /* ===== Fundo animado ===== */
   body {
     font-family: 'Nunito', sans-serif;
-    background: #fffaf0;
-    color: #4a4a4a;
-    margin: 20px;
+    margin: 0;
     padding: 0;
+    background: linear-gradient(180deg, #ffecd2, #fcb69f);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
   }
+  .cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: floatClouds 60s linear infinite;
+  }
+  .cloud:before,
+  .cloud:after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+  }
+  .cloud1 { width: 120px; height: 60px; top: 50px; left: -150px; }
+  .cloud1:before { width: 60px; height: 60px; top: -20px; left: 10px; }
+  .cloud1:after { width: 80px; height: 80px; top: -40px; right: 10px; }
+
+  .cloud2 { width: 150px; height: 80px; top: 200px; left: -200px; animation-duration: 80s; }
+  .cloud2:before { width: 80px; height: 80px; top: -20px; left: 20px; }
+  .cloud2:after { width: 100px; height: 100px; top: -40px; right: 15px; }
+
+  @keyframes floatClouds {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(2000px); }
+  }
+
+  /* ===== Animações ===== */
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes zoomIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+  .animate-fadeIn { animation: fadeIn 1s ease forwards; }
+  .animate-zoomIn { animation: zoomIn 0.8s ease forwards; }
+
+  /* ===== Layout ===== */
   .container {
     max-width: 900px;
     margin: auto;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease forwards;
   }
   h1 {
     font-weight: 700;
@@ -43,13 +92,9 @@
     font-size: 1.1rem;
     margin-bottom: 15px;
   }
-  .highlight {
-    color: #ffcc80;
-    font-weight: 700;
-  }
-  .rainbow-emoji {
-    font-size: 1.5rem;
-  }
+  .highlight { color: #ffcc80; font-weight: 700; }
+  .rainbow-emoji { font-size: 1.5rem; }
+
   .photo {
     width: 100%;
     max-width: 250px;
@@ -58,131 +103,78 @@
     display: block;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
-
-  /* Layout do portfólio lado a lado */
-  .portfolio-container {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-  }
   .featured-photo {
-    width: 100%;
-    max-width: 400px;
+    width: 80%;
+    max-width: 324px;
+    display: block;
+    margin: 0 auto 20px;
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     object-fit: cover;
   }
-  .slider-wrapper {
-    position: relative;
-    max-width: 400px;
-    overflow: hidden;
-    border-radius: 12px;
-  }
-  .slider {
+  .carousel-wrapper {
+    overflow-x: auto;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    overflow-y: hidden;
-    height: 400px;
+    gap: 10px;
+    padding-bottom: 5px;
     scroll-behavior: smooth;
   }
-  .slider img {
-    width: 100%;
-    height: 180px;
-    border-radius: 12px;
+  .carousel-wrapper img {
+    height: 114px;
+    border-radius: 10px;
+    cursor: pointer;
     object-fit: cover;
-    cursor: pointer;
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, border 0.3s ease;
   }
-  .slider img:hover {
-    transform: scale(1.05);
+  .carousel-wrapper img:hover { transform: scale(1.05); }
+  .carousel-wrapper img.active {
+    border: 3px solid rgba(255, 204, 128, 0.8);
+    transform: scale(1.08);
   }
-  .slider-btn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0,0,0,0.4);
-    color: white;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    z-index: 10;
-    font-size: 18px;
-    border-radius: 50%;
-  }
-  .slider-btn.up {
-    top: 5px;
-  }
-  .slider-btn.down {
-    bottom: 5px;
-  }
-  .slider-btn:hover {
-    background-color: rgba(0,0,0,0.6);
-  }
-
-  /* Responsividade */
   @media (max-width: 768px) {
-    .portfolio-container {
-      flex-direction: row;
-      align-items: center;
-      gap: 10px;
-    }
-    .featured-photo {
-      max-width: 50%;
-    }
-    .slider-wrapper {
-      max-width: 45%;
-    }
-    .slider img {
-      height: 120px;
-    }
+    .featured-photo { max-width: 270px; }
+    .carousel-wrapper img { height: 85px; }
   }
 </style>
 </head>
 <body>
 
-<section class="container">
-  <h1>Sobre o Noah — Nosso Bebê Arco-Íris <span class="rainbow-emoji">🌈</span></h1>
-  <img src="IMG-20250810-WA0026.jpg" alt="Foto do Noah sorrindo" class="photo" />
-  <p>A trajetória do Noah é marcada por muita <span class="highlight">fé</span>, <span class="highlight">amor</span> e <span class="highlight">superação</span>.</p>
-  <p>Há três anos, nossa família enfrentou uma grande perda com a partida da nossa filha Yasmin...</p>
-  <p>Mas, em junho de 2024, chegou o Noah — nosso <span class="highlight">bebê arco-íris</span>...</p>
-  <p>Hoje, o Noah enche nossos dias de sorrisos...</p>
+<!-- Nuvens animadas -->
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
 
-  <h2>Portfólio de Fotos</h2>
-  <div class="portfolio-container">
-    <!-- Foto destaque -->
-    <img src="IMG-20250810-WA0026.jpg" alt="Foto destaque do Noah" class="featured-photo" id="featured-photo-main" />
-    
-    <!-- Carrossel lateral -->
-    <div class="slider-wrapper">
-      <button class="slider-btn up" id="slide-up">&#10094;</button>
-      <div class="slider" id="photo-slider">
-        <img src="IMG-20250504-WA0013.jpg" alt="IMG-20250504-WA0013.jpg" />
-        <img src="IMG-20250610-WA0030.jpg" alt="IMG-20250610-WA0030.jpg" />
-        <img src="IMG-20250610-WA0032.jpg" alt="IMG-20250610-WA0032.jpg" />
-        <img src="IMG-20250806-WA0015.jpg" alt="IMG-20250806-WA0015.jpg" />
-        <img src="IMG-20250809-WA0027.jpg" alt="IMG-20250809-WA0027.jpg" />
-        <img src="IMG-20250809-WA0029.jpg" alt="IMG-20250809-WA0029.jpg" />
-        <img src="IMG-20250809-WA0030.jpg" alt="IMG-20250809-WA0030.jpg" />
-        <img src="IMG-20250809-WA0031.jpg" alt="IMG-20250809-WA0031.jpg" />
-        <img src="IMG-20250809-WA0032.jpg" alt="IMG-20250809-WA0032.jpg" />
-        <img src="IMG-20250809-WA0033.jpg" alt="IMG-20250809-WA0033.jpg" />
-        <img src="IMG-20250810-WA0025.jpg" alt="IMG-20250810-WA0025.jpg" />
-        <img src="IMG-20250810-WA0026.jpg" alt="IMG-20250810-WA0026.jpg" />
-        <img src="IMG-20250810-WA0027.jpg" alt="IMG-20250810-WA0027.jpg" />
-        <img src="IMG-20250810-WA0029.jpg" alt="IMG-20250810-WA0029.jpg" />
-        <img src="IMG-20250810-WA0033.jpg" alt="IMG-20250810-WA0033.jpg" />
-      </div>
-      <button class="slider-btn down" id="slide-down">&#10095;</button>
-    </div>
+<section class="container animate-fadeInUp">
+  <h1 class="animate-fadeIn">Sobre o Noah — Nosso Bebê Arco-Íris <span class="rainbow-emoji">🌈</span></h1>
+  <img src="IMG-20250810-WA0026.jpg" alt="Foto do Noah sorrindo" class="photo animate-zoomIn" />
+  <p class="animate-fadeInUp">A trajetória do Noah é marcada por muita <span class="highlight">fé</span>, <span class="highlight">amor</span> e <span class="highlight">superação</span>.</p>
+  <p class="animate-fadeInUp">Há três anos, nossa família enfrentou uma grande perda com a partida da nossa filha Yasmin...</p>
+  <p class="animate-fadeInUp">Mas, em junho de 2024, chegou o Noah — nosso <span class="highlight">bebê arco-íris</span>...</p>
+  <p class="animate-fadeInUp">Hoje, o Noah enche nossos dias de sorrisos...</p>
+
+  <h2 class="animate-fadeInUp">Portfólio de Fotos</h2>
+  <img src="IMG-20250809-WA0031.jpg" alt="Foto destaque" class="featured-photo animate-zoomIn" id="featured-photo-main" />
+
+  <div class="carousel-wrapper animate-fadeInUp" id="photo-carousel">
+    <img src="IMG-20250504-WA0013.jpg" alt="" />
+    <img src="IMG-20250610-WA0030.jpg" alt="" />
+    <img src="IMG-20250610-WA0032.jpg" alt="" />
+    <img src="IMG-20250806-WA0015.jpg" alt="" />
+    <img src="IMG-20250809-WA0027.jpg" alt="" />
+    <img src="IMG-20250809-WA0029.jpg" alt="" />
+    <img src="IMG-20250809-WA0030.jpg" alt="" />
+    <img src="IMG-20250809-WA0031.jpg" alt="" />
+    <img src="IMG-20250809-WA0032.jpg" alt="" />
+    <img src="IMG-20250809-WA0033.jpg" alt="" />
+    <img src="IMG-20250810-WA0025.jpg" alt="" />
+    <img src="IMG-20250810-WA0026.jpg" alt="" />
+    <img src="IMG-20250810-WA0027.jpg" alt="" />
+    <img src="IMG-20250810-WA0029.jpg" alt="" />
+    <img src="IMG-20250810-WA0033.jpg" alt="" />
   </div>
 </section>
 
-<section class="container">
+<section class="container animate-fadeInUp">
   <h2>Informações Básicas</h2>
   <ul>
     <li><strong>Idade:</strong> 1 ano e 2 meses</li>
@@ -194,43 +186,52 @@
   </ul>
 </section>
 
-<section class="container">
+<section class="container animate-fadeInUp">
   <h2>Estilo & Parcerias</h2>
-  <p>O conteúdo do Noah é alegre, espontâneo e cheio de personalidade colorida...</p>
+  <p>O conteúdo do Noah é alegre, espontâneo e cheio de personalidade colorida, sempre transmitindo leveza, autenticidade e carinho.</p>
+  <h3>O que oferecemos para marcas:</h3>
   <ul>
     <li>Ensaios fotográficos com roupas, óculos e calçados infantis</li>
     <li>Posts e stories no Instagram e TikTok</li>
-    <li>Divulgação criativa...</li>
+    <li>Divulgação criativa, focada em famílias e público infantil</li>
     <li>Participação em eventos e ativações infantis</li>
     <li>Parcerias e permutas com marcas</li>
   </ul>
+  <h3>Diferenciais:</h3>
+  <ul>
+    <li>Carisma natural e espontaneidade</li>
+    <li>Conteúdo 100% supervisionado pelos pais</li>
+    <li>Versatilidade para diferentes estilos e marcas</li>
+    <li>Alto potencial de engajamento com público familiar</li>
+  </ul>
 </section>
 
-<section class="container">
+<section class="container animate-fadeInUp">
   <h2>Contato</h2>
-  <p>📩 <strong>E-mail:</strong> <a href="mailto:amanda1545@hotmail.com">amanda1545@hotmail.com</a></p>
-  <p>📱 <strong>WhatsApp:</strong> (47) 98424-7430</p>
-  <p>📷 <strong>Instagram:</strong> <a href="https://instagram.com/stylobabynoah" target="_blank">@stylobabynoah</a></p>
-  <p>🎥 <strong>TikTok:</strong> <a href="https://tiktok.com/@stylobabynoah" target="_blank">@stylobabynoah</a></p>
+  <div class="contact-info">
+    <p>📩 <strong>E-mail:</strong> <a href="mailto:seuemail@exemplo.com">seuemail@exemplo.com</a></p>
+    <p>📱 <strong>WhatsApp:</strong> (xx) xxxxx-xxxx</p>
+    <p>📷 <strong>Instagram:</strong> <a href="https://instagram.com/stylobabynoah" target="_blank">@stylobabynoah</a></p>
+    <p>🎥 <strong>TikTok:</strong> <a href="https://tiktok.com/@stylobabynoah" target="_blank">@stylobabynoah</a></p>
+  </div>
 </section>
 
 <script>
-  const slider = document.getElementById('photo-slider');
   const featuredPhoto = document.getElementById('featured-photo-main');
+  const carouselImages = document.querySelectorAll('#photo-carousel img');
 
-  slider.querySelectorAll('img').forEach(img => {
+  carouselImages.forEach(img => {
+    if (img.src.includes('IMG-20250809-WA0031.jpg')) {
+      img.classList.add('active');
+    }
+  });
+
+  carouselImages.forEach(img => {
     img.addEventListener('click', () => {
       featuredPhoto.src = img.src;
-      featuredPhoto.alt = img.alt;
+      document.querySelector('#photo-carousel img.active')?.classList.remove('active');
+      img.classList.add('active');
     });
-  });
-
-  document.getElementById('slide-up').addEventListener('click', () => {
-    slider.scrollBy({ top: -200, behavior: 'smooth' });
-  });
-
-  document.getElementById('slide-down').addEventListener('click', () => {
-    slider.scrollBy({ top: 200, behavior: 'smooth' });
   });
 </script>
 
