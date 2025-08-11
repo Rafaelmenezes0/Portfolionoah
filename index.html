@@ -95,18 +95,15 @@
     object-fit: cover;
   }
   .slider-wrapper {
+    position: relative;
     overflow: hidden;
     border-radius: 12px;
   }
   .slider {
     display: flex;
     gap: 15px;
-    overflow-x: auto;
+    overflow-x: hidden;
     scroll-behavior: smooth;
-    scrollbar-width: none;
-  }
-  .slider::-webkit-scrollbar {
-    display: none;
   }
   .slider img {
     width: 120px;
@@ -121,6 +118,28 @@
   .slider img:hover {
     transform: scale(1.1);
   }
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.4);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 18px;
+    border-radius: 50%;
+  }
+  .slider-btn.left {
+    left: 5px;
+  }
+  .slider-btn.right {
+    right: 5px;
+  }
+  .slider-btn:hover {
+    background-color: rgba(0,0,0,0.6);
+  }
 </style>
 </head>
 <body>
@@ -129,14 +148,15 @@
   <h1>Sobre o Noah — Nosso Bebê Arco-Íris <span class="rainbow-emoji">🌈</span></h1>
   <img src="fotos/IMG-20250810-WA0026.jpg" alt="Foto do Noah sorrindo" class="photo" id="featured-photo" />
   <p>A trajetória do Noah é marcada por muita <span class="highlight">fé</span>, <span class="highlight">amor</span> e <span class="highlight">superação</span>.</p>
-  <p>Há três anos, nossa família enfrentou uma grande perda com a partida da nossa filha Yasmin, no dia do nascimento. Um momento difícil que deixou uma profunda marca em nossos corações.</p>
-  <p>Mas, em junho de 2024, chegou o Noah — nosso <span class="highlight">bebê arco-íris</span>, um símbolo de esperança e luz após a tempestade. Ele representa a renovação da nossa alegria e o pacto de vida que sentimos ter sido selado por Deus.</p>
-  <p>Hoje, o Noah enche nossos dias de sorrisos, estilo e inspiração...</p>
+  <p>Há três anos, nossa família enfrentou uma grande perda com a partida da nossa filha Yasmin...</p>
+  <p>Mas, em junho de 2024, chegou o Noah — nosso <span class="highlight">bebê arco-íris</span>...</p>
+  <p>Hoje, o Noah enche nossos dias de sorrisos...</p>
 
   <div class="portfolio-container">
     <h2>Portfólio de Fotos</h2>
     <img src="fotos/IMG-20250810-WA0026.jpg" alt="Foto destaque do Noah" class="featured-photo" id="featured-photo-main" />
     <div class="slider-wrapper">
+      <button class="slider-btn left" id="slide-left">&#10094;</button>
       <div class="slider" id="photo-slider">
         <img src="fotos/IMG-20250610-WA0032.jpg" alt="Foto 1 do Noah" />
         <img src="fotos/IMG-20250610-WA0030.jpg" alt="Foto 2 do Noah" />
@@ -153,6 +173,7 @@
         <img src="fotos/IMG-20250809-WA0027.jpg" alt="Foto 13 do Noah" />
         <img src="fotos/IMG-20250809-WA0029.jpg" alt="Foto 14 do Noah" />
       </div>
+      <button class="slider-btn right" id="slide-right">&#10095;</button>
     </div>
   </div>
 </section>
@@ -176,16 +197,9 @@
   <ul>
     <li>Ensaios fotográficos com roupas, óculos e calçados infantis</li>
     <li>Posts e stories no Instagram e TikTok</li>
-    <li>Divulgação criativa, focada em famílias e público infantil</li>
+    <li>Divulgação criativa...</li>
     <li>Participação em eventos e ativações infantis</li>
     <li>Parcerias e permutas com marcas</li>
-  </ul>
-  <h3>Diferenciais:</h3>
-  <ul>
-    <li>Carisma natural e espontaneidade</li>
-    <li>Conteúdo 100% supervisionado pelos pais</li>
-    <li>Versatilidade para diferentes estilos e marcas</li>
-    <li>Alto potencial de engajamento com público familiar</li>
   </ul>
 </section>
 
@@ -210,26 +224,12 @@
     });
   });
 
-  let scrollAmount = 0;
-  const scrollStep = 1;
-  const scrollInterval = 20;
-  const sliderWidth = slider.scrollWidth - slider.clientWidth;
-
-  function autoScroll() {
-    scrollAmount += scrollStep;
-    if(scrollAmount >= sliderWidth) {
-      scrollAmount = 0;
-    }
-    slider.scrollLeft = scrollAmount;
-  }
-
-  let scrollTimer = setInterval(autoScroll, scrollInterval);
-
-  slider.addEventListener('mouseenter', () => {
-    clearInterval(scrollTimer);
+  document.getElementById('slide-left').addEventListener('click', () => {
+    slider.scrollBy({ left: -150, behavior: 'smooth' });
   });
-  slider.addEventListener('mouseleave', () => {
-    scrollTimer = setInterval(autoScroll, scrollInterval);
+
+  document.getElementById('slide-right').addEventListener('click', () => {
+    slider.scrollBy({ left: 150, behavior: 'smooth' });
   });
 </script>
 
