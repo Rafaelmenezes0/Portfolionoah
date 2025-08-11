@@ -6,7 +6,6 @@
 <title>Portfólio Noah - Bebê Arco-Íris</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
-
   body {
     font-family: 'Nunito', sans-serif;
     background: #fffaf0;
@@ -15,130 +14,70 @@
     padding: 0;
   }
   .container {
-    max-width: 700px;
+    max-width: 900px;
     margin: auto;
     background: #ffffff;
-    padding: 30px;
+    padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     margin-bottom: 40px;
   }
-  h1 {
-    font-weight: 700;
-    color: #b39ddb;
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-  }
-  h2 {
-    font-weight: 700;
-    color: #ff8a80;
-    font-size: 1.6rem;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 3px solid #ffcc80;
-    padding-bottom: 5px;
-  }
-  h3 {
-    font-weight: 700;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-  p {
-    line-height: 1.6;
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-  }
-  ul {
-    margin-left: 20px;
-    margin-bottom: 20px;
-  }
-  li {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-  }
-  .highlight {
-    color: #ffcc80;
+  h1, h2, h3 {
     font-weight: 700;
   }
-  .rainbow-emoji {
-    font-size: 1.5rem;
-  }
-  .photo {
-    width: 100%;
-    max-width: 250px;
-    border-radius: 50%;
-    margin: 20px auto 30px;
-    display: block;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  .contact-info {
-    font-size: 1.1rem;
-  }
-  .contact-info p {
-    margin: 5px 0;
-  }
-  a {
-    color: #81d4fa;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  .portfolio-container {
-    margin-top: 20px;
+  h1 { color: #b39ddb; font-size: 2rem; }
+  h2 { color: #ff8a80; font-size: 1.6rem; border-bottom: 3px solid #ffcc80; padding-bottom: 5px; }
+  p, li { font-size: 1.1rem; line-height: 1.6; }
+  .highlight { color: #ffcc80; font-weight: 700; }
+  .rainbow-emoji { font-size: 1.5rem; }
+
+  /* Layout lado a lado */
+  .portfolio-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
   }
   .featured-photo {
-    width: 100%;
+    flex: 1;
+    max-width: 450px;
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    margin-bottom: 20px;
     object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+  .carousel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   .slider-wrapper {
     position: relative;
     overflow: hidden;
-    border-radius: 12px;
   }
   .slider {
     display: flex;
-    gap: 15px;
-    overflow-x: hidden;
+    gap: 10px;
+    overflow-x: auto;
     scroll-behavior: smooth;
   }
   .slider img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 12px;
     object-fit: cover;
-    flex-shrink: 0;
     cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
   }
-  .slider img:hover {
-    transform: scale(1.1);
-  }
-  .slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.4);
-    color: white;
+  .slider img:hover { transform: scale(1.1); }
+  .carousel button {
+    background: #ffcc80;
     border: none;
-    padding: 10px;
+    padding: 8px;
     cursor: pointer;
-    z-index: 10;
-    font-size: 18px;
-    border-radius: 50%;
-  }
-  .slider-btn.left {
-    left: 5px;
-  }
-  .slider-btn.right {
-    right: 5px;
-  }
-  .slider-btn:hover {
-    background-color: rgba(0,0,0,0.6);
+    border-radius: 8px;
+    font-weight: bold;
   }
 </style>
 </head>
@@ -146,34 +85,34 @@
 
 <section class="container">
   <h1>Sobre o Noah — Nosso Bebê Arco-Íris <span class="rainbow-emoji">🌈</span></h1>
-  <img src="IMG-20250810-WA0026.jpg" alt="Foto do Noah sorrindo" class="photo" id="featured-photo" />
   <p>A trajetória do Noah é marcada por muita <span class="highlight">fé</span>, <span class="highlight">amor</span> e <span class="highlight">superação</span>.</p>
-  <p>Há três anos, nossa família enfrentou uma grande perda com a partida da nossa filha Yasmin...</p>
-  <p>Mas, em junho de 2024, chegou o Noah — nosso <span class="highlight">bebê arco-íris</span>...</p>
-  <p>Hoje, o Noah enche nossos dias de sorrisos...</p>
+  <p>Há três anos, nossa família enfrentou uma grande perda com a partida da nossa filha Yasmin, no dia do nascimento. Um momento difícil que deixou uma profunda marca em nossos corações.</p>
+  <p>Mas, em junho de 2024, chegou o Noah — nosso <span class="highlight">bebê arco-íris</span>, um símbolo de esperança e luz após a tempestade. Ele representa a renovação da nossa alegria e o pacto de vida que sentimos ter sido selado por Deus.</p>
+  <p>Hoje, o Noah enche nossos dias de sorrisos, estilo e inspiração. Com a supervisão e amor dos pais, ele compartilha sua autenticidade e carisma no universo da moda infantil, encantando famílias e marcas com sua energia única.</p>
 
-  <div class="portfolio-container">
-    <h2>Portfólio de Fotos</h2>
+  <h2>Portfólio de Fotos</h2>
+  <div class="portfolio-wrapper">
     <img src="IMG-20250810-WA0026.jpg" alt="Foto destaque do Noah" class="featured-photo" id="featured-photo-main" />
-    <div class="slider-wrapper">
-      <button class="slider-btn left" id="slide-left">&#10094;</button>
-      <div class="slider" id="photo-slider">
-        <img src="IMG-20250610-WA0032.jpg" alt="Foto 1 do Noah" />
-        <img src="IMG-20250610-WA0030.jpg" alt="Foto 2 do Noah" />
-        <img src="IMG-20250810-WA0029.jpg" alt="Foto 3 do Noah" />
-        <img src="IMG-20250809-WA0030.jpg" alt="Foto 4 do Noah" />
-        <img src="IMG-20250810-WA0025.jpg" alt="Foto 5 do Noah" />
-        <img src="IMG-20250809-WA0032.jpg" alt="Foto 6 do Noah" />
-        <img src="IMG-20250806-WA0015.jpg" alt="Foto 7 do Noah" />
-        <img src="IMG-20250810-WA0027.jpg" alt="Foto 8 do Noah" />
-        <img src="IMG-20250809-WA0033.jpg" alt="Foto 9 do Noah" />
-        <img src="IMG-20250810-WA0033.jpg" alt="Foto 10 do Noah" />
-        <img src="IMG-20250504-WA0013.jpg" alt="Foto 11 do Noah" />
-        <img src="IMG-20250809-WA0031.jpg" alt="Foto 12 do Noah" />
-        <img src="IMG-20250809-WA0027.jpg" alt="Foto 13 do Noah" />
-        <img src="IMG-20250809-WA0029.jpg" alt="Foto 14 do Noah" />
+    <div class="carousel">
+      <div class="slider-wrapper">
+        <div class="slider" id="photo-slider">
+          <img src="IMG-20250810-WA0026.jpg" alt="Foto 1" />
+          <img src="IMG-20250810-WA0027.jpg" alt="Foto 2" />
+          <img src="IMG-20250810-WA0028.jpg" alt="Foto 3" />
+          <img src="IMG-20250810-WA0029.jpg" alt="Foto 4" />
+          <img src="IMG-20250810-WA0030.jpg" alt="Foto 5" />
+          <img src="IMG-20250810-WA0031.jpg" alt="Foto 6" />
+          <img src="IMG-20250810-WA0032.jpg" alt="Foto 7" />
+          <img src="IMG-20250810-WA0033.jpg" alt="Foto 8" />
+          <img src="IMG-20250810-WA0034.jpg" alt="Foto 9" />
+          <img src="IMG-20250810-WA0035.jpg" alt="Foto 10" />
+          <img src="IMG-20250810-WA0036.jpg" alt="Foto 11" />
+          <img src="IMG-20250810-WA0037.jpg" alt="Foto 12" />
+          <img src="IMG-20250810-WA0038.jpg" alt="Foto 13" />
+          <img src="IMG-20250810-WA0039.jpg" alt="Foto 14" />
+          <img src="IMG-20250810-WA0040.jpg" alt="Foto 15" />
+        </div>
       </div>
-      <button class="slider-btn right" id="slide-right">&#10095;</button>
     </div>
   </div>
 </section>
@@ -192,44 +131,40 @@
 
 <section class="container">
   <h2>Estilo & Parcerias</h2>
-  <p>O conteúdo do Noah é alegre, espontâneo e cheio de personalidade colorida...</p>
+  <p>O conteúdo do Noah é alegre, espontâneo e cheio de personalidade colorida, sempre transmitindo leveza, autenticidade e carinho.</p>
   <h3>O que oferecemos para marcas:</h3>
   <ul>
     <li>Ensaios fotográficos com roupas, óculos e calçados infantis</li>
     <li>Posts e stories no Instagram e TikTok</li>
-    <li>Divulgação criativa...</li>
+    <li>Divulgação criativa, focada em famílias e público infantil</li>
     <li>Participação em eventos e ativações infantis</li>
     <li>Parcerias e permutas com marcas</li>
+  </ul>
+  <h3>Diferenciais:</h3>
+  <ul>
+    <li>Carisma natural e espontaneidade</li>
+    <li>Conteúdo 100% supervisionado pelos pais</li>
+    <li>Versatilidade para diferentes estilos e marcas</li>
+    <li>Alto potencial de engajamento com público familiar</li>
   </ul>
 </section>
 
 <section class="container">
   <h2>Contato</h2>
-  <div class="contact-info">
-    <p>📩 <strong>E-mail:</strong> <a href="mailto:amanda1545@hotmail.com">amanda1545@hotmail.com</a></p>
-    <p>📱 <strong>WhatsApp:</strong> (47) 98424-7430</p>
-    <p>📷 <strong>Instagram:</strong> <a href="https://instagram.com/stylobabynoah" target="_blank">@stylobabynoah</a></p>
-    <p>🎥 <strong>TikTok:</strong> <a href="https://tiktok.com/@stylobabynoah" target="_blank">@stylobabynoah</a></p>
-  </div>
+  <p>📩 <strong>E-mail:</strong> <a href="mailto:amanda1545@hotmail.com">amanda1545@hotmail.com</a></p>
+  <p>📱 <strong>WhatsApp:</strong> (47) 98424-7430</p>
+  <p>📷 <strong>Instagram:</strong> <a href="https://instagram.com/stylobabynoah" target="_blank">@stylobabynoah</a></p>
+  <p>🎥 <strong>TikTok:</strong> <a href="https://tiktok.com/@stylobabynoah" target="_blank">@stylobabynoah</a></p>
 </section>
 
 <script>
   const slider = document.getElementById('photo-slider');
   const featuredPhoto = document.getElementById('featured-photo-main');
-
   slider.querySelectorAll('img').forEach(img => {
     img.addEventListener('click', () => {
       featuredPhoto.src = img.src;
       featuredPhoto.alt = img.alt;
     });
-  });
-
-  document.getElementById('slide-left').addEventListener('click', () => {
-    slider.scrollBy({ left: -150, behavior: 'smooth' });
-  });
-
-  document.getElementById('slide-right').addEventListener('click', () => {
-    slider.scrollBy({ left: 150, behavior: 'smooth' });
   });
 </script>
 
