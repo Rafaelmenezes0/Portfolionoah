@@ -7,7 +7,6 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 
-  /* ===== Fundo animado ===== */
   body {
     font-family: 'Nunito', sans-serif;
     margin: 0;
@@ -17,12 +16,15 @@
     position: relative;
     min-height: 100vh;
   }
+
+  /* ===== Fundo animado ===== */
   .cloud {
     position: absolute;
     background: white;
     border-radius: 50%;
     opacity: 0.7;
     animation: floatClouds 60s linear infinite;
+    z-index: 0;
   }
   .cloud:before,
   .cloud:after {
@@ -44,6 +46,34 @@
     100% { transform: translateX(2000px); }
   }
 
+  /* Arco-íris e estrelas */
+  .rainbow {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 200px;
+    background: conic-gradient(red, orange, yellow, green, blue, indigo, violet);
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0.2;
+    z-index: 0;
+  }
+  .star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out;
+    opacity: 0.8;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+  }
+
   /* ===== Animações ===== */
   @keyframes fadeInUp {
     0% { opacity: 0; transform: translateY(20px); }
@@ -63,6 +93,8 @@
 
   /* ===== Layout ===== */
   .container {
+    position: relative;
+    z-index: 1;
     max-width: 900px;
     margin: auto;
     background: rgba(255, 255, 255, 0.95);
@@ -103,6 +135,8 @@
     display: block;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
+
+  /* ===== Foto destaque centralizada ===== */
   .featured-photo {
     width: 80%;
     max-width: 324px;
@@ -111,7 +145,10 @@
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
   }
+
+  /* ===== Carrossel ===== */
   .carousel-wrapper {
     overflow-x: auto;
     display: flex;
@@ -132,6 +169,7 @@
     border: 3px solid rgba(255, 204, 128, 0.8);
     transform: scale(1.08);
   }
+
   @media (max-width: 768px) {
     .featured-photo { max-width: 270px; }
     .carousel-wrapper img { height: 85px; }
@@ -140,9 +178,20 @@
 </head>
 <body>
 
-<!-- Nuvens animadas -->
+<!-- Nuvens e arco-íris -->
 <div class="cloud cloud1"></div>
 <div class="cloud cloud2"></div>
+<div class="rainbow"></div>
+<!-- Estrelas -->
+<script>
+  for(let i=0; i<40; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.top = Math.random()*100 + '%';
+    star.style.left = Math.random()*100 + '%';
+    document.body.appendChild(star);
+  }
+</script>
 
 <section class="container animate-fadeInUp">
   <h1 class="animate-fadeIn">Sobre o Noah — Nosso Bebê Arco-Íris <span class="rainbow-emoji">🌈</span></h1>
@@ -228,7 +277,11 @@
 
   carouselImages.forEach(img => {
     img.addEventListener('click', () => {
-      featuredPhoto.src = img.src;
+      featuredPhoto.style.opacity = 0;
+      setTimeout(() => {
+        featuredPhoto.src = img.src;
+        featuredPhoto.style.opacity = 1;
+      }, 300);
       document.querySelector('#photo-carousel img.active')?.classList.remove('active');
       img.classList.add('active');
     });
