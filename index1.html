@@ -1,0 +1,310 @@
++<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portifólio Noah - Bebê Arco-Íris</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+/* Centralizar todos os títulos */
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+/* Centralizar todo o texto */
+body {
+  text-align: center;
+}
+
+/* Remover pontos das listas */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #ffecd2, #fcb69f);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* ===== Fundo animado ===== */
+  .cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: floatClouds 60s linear infinite;
+    z-index: 0;
+  }
+  .cloud:before,
+  .cloud:after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+  }
+  .cloud1 { width: 120px; height: 60px; top: 50px; left: -150px; }
+  .cloud1:before { width: 60px; height: 60px; top: -20px; left: 10px; }
+  .cloud1:after { width: 80px; height: 80px; top: -40px; right: 10px; }
+
+  .cloud2 { width: 150px; height: 80px; top: 200px; left: -200px; animation-duration: 80s; }
+  .cloud2:before { width: 80px; height: 80px; top: -20px; left: 20px; }
+  .cloud2:after { width: 100px; height: 100px; top: -40px; right: 15px; }
+
+  @keyframes floatClouds {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(2000px); }
+  }
+
+  /* Arco-íris e estrelas */
+  .rainbow {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 200px;
+    background: conic-gradient(red, orange, yellow, green, blue, indigo, violet);
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0.2;
+    z-index: 0;
+  }
+  .star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out;
+    opacity: 0.8;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+  }
+
+  /* ===== Animações ===== */
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes zoomIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+  .animate-fadeIn { animation: fadeIn 1s ease forwards; }
+  .animate-zoomIn { animation: zoomIn 0.8s ease forwards; }
+
+  /* ===== Layout ===== */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease forwards;
+  }
+  h1 {
+    font-weight: 700;
+    color: #b39ddb;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-weight: 700;
+    color: #ff8a80;
+    font-size: 1.6rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #ffcc80;
+    padding-bottom: 5px;
+  }
+  p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+  .highlight { color: #ffcc80; font-weight: 700; }
+  .rainbow-emoji { font-size: 1.5rem; }
+
+  .photo {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 50%;
+    margin: 20px auto 30px;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  /* ===== Foto destaque centralizada ===== */
+  .featured-photo {
+    width: 80%;
+    max-width: 324px;
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  /* ===== Carrossel ===== */
+  .carousel-wrapper {
+    overflow-x: auto;
+    display: flex;
+    gap: 10px;
+    padding-bottom: 5px;
+    scroll-behavior: smooth;
+  }
+  .carousel-wrapper img {
+    height: 114px;
+    border-radius: 10px;
+    cursor: pointer;
+    object-fit: cover;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, border 0.3s ease;
+  }
+  .carousel-wrapper img:hover { transform: scale(1.05); }
+  .carousel-wrapper img.active {
+    border: 3px solid rgba(255, 204, 128, 0.8);
+    transform: scale(1.08);
+  }
+
+  @media (max-width: 768px) {
+    .featured-photo { max-width: 270px; }
+    .carousel-wrapper img { height: 85px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nuvens e arco-íris -->
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="rainbow"></div>
+<!-- Estrelas -->
+<script>
+  for(let i=0; i<40; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.top = Math.random()*100 + '%';
+    star.style.left = Math.random()*100 + '%';
+    document.body.appendChild(star);
+  }
+</script>
+
+<section class="container animate-fadeInUp">
+  <h1 class="animate-fadeIn">Sobre o Noah <span class="rainbow-emoji">🌈</span></h1>
+  <img src="IMG-20250809-WA0033.jpg" alt="Foto do Noah sorrindo" class="photo animate-zoomIn" />
+  <p class="animate-fadeInUp">A trajetória do Noah é marcada por muita <span class="highlight">fé</span>, <span class="highlight">amor</span> e <span class="highlight">superação</span>.</p>
+  <p class="animate-fadeInUp">Há três anos, nossa família enfrentou uma grande perda com a partida da nossa filha Yasmin...</p>
+  <p class="animate-fadeInUp">Mas, em junho de 2024, chegou o Noah — nosso <span class="highlight">bebê arco-íris</span>...</p>
+  <p class="animate-fadeInUp">Hoje, o Noah enche nossos dias de sorrisos...</p>
+
+  <h2 class="animate-fadeInUp">Portfólio de Fotos</h2>
+  <img src="IMG-20250809-WA0031.jpg" alt="Foto destaque" class="featured-photo animate-zoomIn" id="featured-photo-main" />
+
+  <div class="carousel-wrapper animate-fadeInUp" id="photo-carousel">
+    <img src="IMG-20250504-WA0013.jpg" alt="" />
+    <img src="IMG-20250610-WA0030.jpg" alt="" />
+    <img src="IMG-20250610-WA0032.jpg" alt="" />
+    <img src="IMG-20250806-WA0015.jpg" alt="" />
+    <img src="IMG-20250809-WA0027.jpg" alt="" />
+    <img src="IMG-20250809-WA0029.jpg" alt="" />
+    <img src="IMG-20250809-WA0030.jpg" alt="" />
+    <img src="IMG-20250809-WA0031.jpg" alt="" />
+    <img src="IMG-20250809-WA0032.jpg" alt="" />
+    <img src="IMG-20250809-WA0033.jpg" alt="" />
+    <img src="IMG-20250810-WA0025.jpg" alt="" />
+    <img src="IMG-20250810-WA0026.jpg" alt="" />
+    <img src="IMG-20250810-WA0027.jpg" alt="" />
+    <img src="IMG-20250810-WA0029.jpg" alt="" />
+    <img src="IMG-20250810-WA0033.jpg" alt="" />
+  </div>
+</section>
+
+<section class="container animate-fadeInUp">
+  <h2>Informações Básicas</h2>
+  <ul>
+    <li><strong>Idade:</strong> 1 ano e 2 meses</li>
+    <li><strong>Cidade:</strong> Gaspar – SC</li>
+    <li><strong>Altura:</strong> 77 cm</li>
+    <li><strong>Peso:</strong> 10 kg</li>
+    <li><strong>Tamanho de roupa:</strong> 1</li>
+    <li><strong>Tamanho de calçado:</strong> 19</li>
+  </ul>
+</section>
+
+<section class="container animate-fadeInUp">
+  <h2>Estilo & Parcerias</h2>
+  <p>O conteúdo do Noah é alegre, espontâneo e cheio de personalidade colorida, sempre transmitindo leveza, autenticidade e carinho.</p>
+  <h3>O que oferecemos para marcas</h3>
+  
+    <li>Ensaios fotográficos com roupas, óculos e calçados infantis</li>
+    <li>Posts e stories no Instagram e TikTok</li>
+    <li>Divulgação criativa, focada em famílias e público infantil</li>
+    <li>Participação em eventos e ativações infantis</li>
+    <li>Parcerias e permutas com marcas</li>
+  
+  <h3>Diferenciais</h3>
+  
+    <li>Carisma natural e espontaneidade</li>
+    <li>Conteúdo 100% supervisionado pelos pais</li>
+    <li>Versatilidade para diferentes estilos e marcas</li>
+    <li>Alto potencial de engajamento com público familiar</li>
+  
+</section>
+
+<section class="container animate-fadeInUp">
+  <h2>Contato</h2>
+  <div class="contact-info">
+    <p>📩 <strong>E-mail:</strong> <a href="mailto:seuemail@exemplo.com">amanda1545@hotmail.com</a></p>
+    <p>📱 <strong>WhatsApp:</strong> (47) 98424-7430</p>
+    <p>📷 <strong>Instagram:</strong> <a href="https://instagram.com/stylobabynoah" target="_blank">@stylobabynoah</a></p>
+    <p>🎥 <strong>TikTok:</strong> <a href="https://tiktok.com/@stylobabynoah" target="_blank">@stylobabynoah</a></p>
+  </div>
+</section>
+
+<script>
+  const featuredPhoto = document.getElementById('featured-photo-main');
+  const carouselImages = document.querySelectorAll('#photo-carousel img');
+
+  carouselImages.forEach(img => {
+    if (img.src.includes('IMG-20250809-WA0031.jpg')) {
+      img.classList.add('active');
+    }
+  });
+
+  carouselImages.forEach(img => {
+    img.addEventListener('click', () => {
+      featuredPhoto.style.opacity = 0;
+      setTimeout(() => {
+        featuredPhoto.src = img.src;
+        featuredPhoto.style.opacity = 1;
+      }, 300);
+      document.querySelector('#photo-carousel img.active')?.classList.remove('active');
+      img.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
