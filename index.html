@@ -1,543 +1,127 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Portfólio Noah - Bebê Arco-Íris</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Noah - Media Kit</title>
 <style>
+  :root{
+    --sky-top:#fff8ff;
+    --sky-mid:#eafaff;
+    --sky-bottom:#fff6fb;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;font-family:'Nunito',sans-serif;overflow-x:hidden;}
 
-    :root{
-      --sky-top: #fff8ff;
-      --sky-mid: #eafaff;
-      --sky-bottom: #fff6fb;
-    }
-    html,body{height:100%;margin:0;}
-    #bg{
-      position:fixed;inset:0;overflow:hidden;z-index:-1;
-      background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-bottom) 100%);
-    }
-    /* Sol com imagem GIF */
-    #sun{
-      position:absolute;top:8%;right:5%;
-      width:200px;height:200px;
-      background:url('sun-69.gif') no-repeat center/contain;
-      z-index:3;
-    }
-    .cloud{
-      position:absolute;background-size:contain;background-repeat:no-repeat;
-      animation:moveClouds 60s linear infinite;
-      opacity:0.85;
-    }
-    .cloud.c1{top:20%;left:-200px;width:300px;height:150px;background-image:url('nuvem.png');animation-duration:70s;}
-    .cloud.c2{top:40%;left:-250px;width:400px;height:180px;background-image:url('nuvem.png');animation-duration:80s;}
-    .cloud.c3{top:60%;left:-300px;width:350px;height:160px;background-image:url('nuvem.png');animation-duration:90s;}
-    @keyframes moveClouds{0%{transform:translateX(0)}100%{transform:translateX(120vw)}}
-    #rainbow{
-      position:absolute;left:50%;transform:translateX(-50%);bottom:-12%;width:140%;
-    }
-  
+  /* FUNDO */
+  #bg{
+    position:fixed;inset:0;overflow:hidden;z-index:-1;
+    background:linear-gradient(180deg,var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-bottom) 100%);
+  }
+  #sun{
+    position:absolute;top:8%;right:12%;width:150px;height:150px;
+    background:url('sun-69.gif') no-repeat center/contain;
+    z-index:3;
+  }
+  .cloud{position:absolute;background-size:contain;background-repeat:no-repeat;animation:moveClouds 60s linear infinite;opacity:0.85;}
+  .cloud.c1{top:20%;left:-200px;width:300px;height:150px;background-image:url('nuvem.png');animation-duration:70s;}
+  .cloud.c2{top:40%;left:-250px;width:400px;height:180px;background-image:url('nuvem.png');animation-duration:80s;}
+  .cloud.c3{top:60%;left:-300px;width:350px;height:160px;background-image:url('nuvem.png');animation-duration:90s;}
+  @keyframes moveClouds{0%{transform:translateX(0)}100%{transform:translateX(120vw)}}
+  #rainbow{position:absolute;left:50%;transform:translateX(-50%);bottom:-12%;width:140%;}
 
-/* ===== CSS Sobre Noah ===== */
+  /* MENU ARCO-ÍRIS */
+  header{position:sticky;top:0;z-index:999;padding:15px 0;text-align:center;background:transparent;}
+  .menu-arcoiris a{
+    display:inline-block;padding:10px 18px;margin:0 8px;border-radius:12px;font-weight:bold;text-decoration:none;color:white;position:relative;overflow:hidden;z-index:0;transition:0.3s;
+  }
+  .menu-arcoiris a::before{
+    content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+    background: linear-gradient(45deg,#ff4d6d,#ff9933,#ffee33,#33ff77,#33bbff,#cc66ff,#ff4d6d);
+    background-size:400% 400%;filter:blur(10px);z-index:-2;animation: rainbowAnim 6s linear infinite;border-radius:15px;opacity:0.7;
+  }
+  .menu-arcoiris a::after{
+    content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);border-radius:12px;z-index:-1;transition:0.3s;
+  }
+  .menu-arcoiris a:hover{color:#fff;}
+  .menu-arcoiris a:hover::after{background:rgba(0,0,0,0);}
+  .menu-arcoiris a.active{color:#fff;box-shadow:0 0 10px rgba(255,255,255,0.8);}
+  @keyframes rainbowAnim{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+  /* CONTAINER LIMITADOR */
+  .container{position:relative;z-index:1;max-width:900px;margin:20px auto;padding:20px;background:rgba(255,255,255,0.95);border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.1);height:calc(100vh - 80px);display:flex;flex-direction:column;justify-content:flex-start;}
 
-  body {
-    font-family: 'Nunito', sans-serif;
-    background-color: #fff;
-    margin: 0;
-    padding: 30px;
-    text-align: center;
+  /* BEM-VINDO */
+  .bem-vindo{text-align:center;margin-bottom:20px;}
+  .bem-vindo h1{font-size:2rem;color:#333;margin-bottom:8px;}
+  .bem-vindo p{font-size:1.1rem;color:#555;line-height:1.4;}
+
+  /* SOBRE NOAH */
+  .sobre-noah{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;text-align:left;flex:1;overflow:hidden;}
+  .sobre-noah img{width:100%;max-width:280px;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+  .texto-noah{flex:1;min-width:250px;max-height:100%;overflow-y:auto;}
+  .texto-noah p{margin-bottom:10px;}
+
+  @media(max-width:900px){
+    .sobre-noah{flex-direction:column;align-items:center;}
+    .texto-noah{text-align:center;}
+    .sobre-noah img{max-width:80%;}
   }
 
-  /* Título */
-  .titulo-noah {
-    font-weight: 700;
-    color: #89CFF0;
-    font-size: 2rem;
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    padding-bottom: 0;
-  }
-
-  /* Linha arco-íris igual à do portfólio */
-  .linha-arcoiris-noah {
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(
-      to right,
-      #a7d8f0,
-      #ff9aa2,
-      #ffb347,
-      #fff176,
-      #77dd77,
-      #84b6f4,
-      #cba6f7
-    );
-    background-size: 400% 100%;
-    animation: rainbowSlide 8.64s linear infinite;
-    border-radius: 2px;
-    margin-bottom: 30px;
-  }
-
-  @keyframes rainbowSlide {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 400% 50%; }
-  }
-
-  /* Layout da seção */
-  .sobre-noah {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    max-width: 900px;
-    margin: auto;
-    flex-wrap: wrap; /* Empilha no mobile */
-    text-align: left;
-  }
-
-  /* Foto */
-  .sobre-noah img {
-    width: 100%;
-    max-width: 350px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-
-  /* Texto */
-  .texto-noah {
-    flex: 1;
-    min-width: 250px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #555;
-  }
-
-
-
-/* ===== CSS Portfólio ===== */
-
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
-
-  body {
-    font-family: 'Nunito', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #fff;
-    overflow-x: hidden;
-    min-height: 100vh;
-    position: relative;
-  }
-
-  /* Layout */
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    margin: auto;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin-bottom: 40px;
-    animation: fadeInUp 0.8s ease forwards;
-  }
-
-  h2 {
-    font-weight: 700;
-    color: #000;
-    font-size: 2rem;
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
-  }
-
-  h2::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(
-      to right,
-      #a7d8f0,
-      #ff9aa2,
-      #ffb347,
-      #fff176,
-      #77dd77,
-      #84b6f4,
-      #cba6f7
-    );
-    background-size: 400% 100%;
-    animation: rainbowSlide 8.64s linear infinite;
-    border-radius: 2px;
-  }
-
-  p {
-    line-height: 1.6;
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-  }
-
-  /* Foto destaque */
-  .featured-container {
-    position: relative;
-    width: 80%;
-    margin: auto;
-    text-align: center;
-  }
-
-  .featured-photo {
-    width: 100%;
-    max-width: 324px;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    object-fit: cover;
-    transition: opacity 0.5s ease;
-    border: 2.4px solid transparent;
-    background: linear-gradient(
-      to right,
-      #a7d8f0,
-      #ff9aa2,
-      #ffb347,
-      #fff176,
-      #77dd77,
-      #84b6f4,
-      #cba6f7
-    ) border-box;
-    background-size: 400% 100%;
-    animation: rainbowSlide 8.64s linear infinite;
-  }
-
-  .nav-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    color: rgba(0,0,0,0.5);
-    background: rgba(255,255,255,0.7);
-    border-radius: 50%;
-    padding: 5px 10px;
-    cursor: pointer;
-    user-select: none;
-  }
-  .nav-arrow:hover { background: rgba(255,255,255,0.9); }
-  .arrow-left { left: -40px; }
-  .arrow-right { right: -40px; }
-
-  /* Carrossel */
-  .carousel-wrapper {
-    overflow-x: auto;
-    display: flex;
-    gap: 10px;
-    padding-bottom: 5px;
-    scroll-behavior: smooth;
-  }
-  .carousel-wrapper img {
-    height: 108px;
-    border-radius: 10px;
-    cursor: pointer;
-    object-fit: cover;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, border 0.3s ease, opacity 0.5s ease;
-  }
-  .carousel-wrapper img:hover { transform: scale(1.05); }
-  .carousel-wrapper img.active {
-    border: 3px solid rgba(255, 204, 128, 0.8);
-    transform: scale(1.08);
-  }
-
-  @media (max-width: 768px) {
-    .featured-container { width: 90%; }
-    .featured-photo { max-width: 270px; }
-    .carousel-wrapper img { height: 81px; }
-    .nav-arrow { font-size: 1.5rem; padding: 4px 8px; }
-    .arrow-left { left: -25px; }
-    .arrow-right { right: -25px; }
-  }
-
-  /* Animação arco-íris */
-  @keyframes rainbowSlide {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 400% 50%; }
-  }
-
-
-/* ===== CSS Seções ===== */
-
-  section.container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-
-  section.container h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    font-weight: 700;
-    color: #89CFF0;
-    position: relative;
-    display: block; /* linha pega toda a largura */
-    padding-bottom: 8px;
-    line-height: 1.2;
-  }
-
-  section.container h2::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 4px;
-    width: 100%;
-    background: linear-gradient(
-      to right,
-      #a7d8f0,
-      #ff9aa2,
-      #ffb347,
-      #fff176,
-      #77dd77,
-      #84b6f4,
-      #cba6f7
-    );
-    background-size: 400% 100%;
-    animation: rainbowSlide 8s linear infinite;
-    border-radius: 2px;
-  }
-
-  @keyframes rainbowSlide {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 400% 50%; }
-  }
-
-  section.container h3 {
-    font-size: 1.3rem;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: #444;
-    text-align: left;
-  }
-
-  section.container p, 
-  section.container li {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #555;
-    text-align: left;
-  }
-
-  section.container ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  section.container ul li::before {
-    content: "• ";
-    color: #ff9aa2;
-    font-weight: bold;
-  }
-
-  /* Links */
-  section.container a {
-    color: #84b6f4;
-    text-decoration: none;
-  }
-  section.container a:hover {
-    text-decoration: underline;
-  }
-
-  /* Responsividade */
-  @media (max-width: 768px) {
-    section.container {
-      padding: 20px;
-      margin: 20px;
-    }
-    section.container h2 {
-      font-size: 1.5rem;
-      padding-bottom: 6px;
-    }
-    section.container h2::after {
-      height: 3px;
-    }
-    section.container h3 {
-      font-size: 1.2rem;
-    }
-    section.container p, 
-    section.container li {
-      font-size: 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    section.container h2 {
-      font-size: 1.3rem;
-      padding-bottom: 5px;
-    }
-    section.container h2::after {
-      height: 2px;
-    }
-  }
-
+  footer{background:#f8f8f8;padding:15px;margin-top:10px;text-align:center;font-size:0.9rem;color:#555;}
 </style>
 </head>
 <body>
-<!-- Fundo -->
 <div id="bg">
-<div id="sun"></div>
-<svg aria-hidden="true" id="rainbow" preserveaspectratio="xMidYMax slice" viewbox="0 0 1000 350">
-<defs>
-<filter height="200%" id="gblur" width="200%" x="-50%" y="-50%">
-<fegaussianblur result="b" stddeviation="8"></fegaussianblur>
-<feblend in="SourceGraphic" in2="b" mode="screen"></feblend>
-</filter>
-</defs>
-<g fill="none" filter="url(#gblur)" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,40)">
-<path d="M40 320 Q500 -40 960 320" stroke="#ff4d6d" stroke-width="72"></path>
-<path d="M80 320 Q500 -10 920 320" stroke="#ff9933" stroke-width="62"></path>
-<path d="M120 320 Q500 20 880 320" stroke="#ffee33" stroke-width="54"></path>
-<path d="M160 320 Q500 60 840 320" stroke="#33ff77" stroke-width="46"></path>
-<path d="M200 320 Q500 90 800 320" stroke="#33bbff" stroke-width="38"></path>
-<path d="M240 320 Q500 120 760 320" stroke="#cc66ff" stroke-width="30"></path>
-</g>
-</svg>
-<div class="cloud c1"></div>
-<div class="cloud c2"></div>
-<div class="cloud c3"></div>
+  <div id="sun"></div>
+  <svg aria-hidden="true" id="rainbow" preserveAspectRatio="xMidYMax slice" viewBox="0 0 1000 350">
+    <defs>
+      <filter id="gblur" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="8" result="b"/>
+        <feBlend in="SourceGraphic" in2="b" mode="screen"/>
+      </filter>
+    </defs>
+    <g fill="none" filter="url(#gblur)" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,40)">
+      <path d="M40 320 Q500 -40 960 320" stroke="#ff4d6d" stroke-width="72"/>
+      <path d="M80 320 Q500 -10 920 320" stroke="#ff9933" stroke-width="62"/>
+      <path d="M120 320 Q500 20 880 320" stroke="#ffee33" stroke-width="54"/>
+      <path d="M160 320 Q500 60 840 320" stroke="#33ff77" stroke-width="46"/>
+      <path d="M200 320 Q500 90 800 320" stroke="#33bbff" stroke-width="38"/>
+      <path d="M240 320 Q500 120 760 320" stroke="#cc66ff" stroke-width="30"/>
+    </g>
+  </svg>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
 </div>
-<!-- Sobre Noah -->
 
+<header>
+  <nav class="menu-arcoiris">
+    <a href="index.html" class="active">Home</a>
+    <a href="quem.html">Quem é Noah</a>
+    <a href="parcerias.html">Parcerias</a>
+    <a href="portfolio.html">Portfólio</a>
+    <a href="dados.html">Dados</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+</header>
 
-<!-- Portfólio -->
-<section class="container"><h2 class="titulo-noah">Sobre o Noah 🌈</h2><div class="sobre-noah">
-<img alt="Foto do Noah sorrindo" src="IMG-20250610-WA0030.jpg"/>
-<div class="texto-noah">
-<p><strong>Noah é a prova viva de que o amor pode colorir o mundo.</strong></p>
-<p>Um bebê arco-íris que nasceu depois da tempestade, trazendo consigo a suavidade da paz e a alegria das novas manhãs.</p>
-<p>Seu sorriso ilumina como o primeiro raio de sol, e seu olhar doce abraça corações sem dizer uma palavra.</p>
-<p>Há nele um brilho que transforma qualquer lugar, enchendo o ar de ternura e esperança.</p>
-<p>Por onde passa, Noah deixa um rastro de encanto — como um arco-íris que surge, inesperado, depois da chuva.</p>
+<section class="container">
+  <div class="bem-vindo">
+    <h1>Bem-vindo ao Media Kit do Noah</h1>
+    <p>Descubra o carisma e a versatilidade de Noah, um bebê que encanta marcas e seguidores.</p>
+  </div>
 
-Quem é Noah Menezes
-
-Com apenas 1 aninho, Noah já encanta com seu sorriso, carisma e muito estilo.
-Seu perfil nasceu para inspirar famílias que buscam moda infantil moderna, confortável e cheia de personalidade.
-
-Cada publicação é planejada com cuidado para transmitir alegria, autenticidade e a essência da infância, transformando momentos simples em inspiração para outras famílias.
-
-</div>
-</div></section><section class="container">
-<h2>Portifólio de Fotos</h2>
-<div class="featured-container">
-<span class="nav-arrow arrow-left">❮</span>
-<img alt="Foto destaque" class="featured-photo" id="featured-photo-main" src="IMG-20250809-WA0031.jpg">
-<span class="nav-arrow arrow-right">❯</span>
-</img></div>
-<div class="carousel-wrapper" id="photo-carousel">
-<img alt="" src="IMG-20250504-WA0013.jpg"/>
-<img alt="" src="IMG-20250610-WA0030.jpg"/>
-<img alt="" src="IMG-20250610-WA0032.jpg"/>
-<img alt="" src="IMG-20250806-WA0015.jpg"/>
-<img alt="" src="IMG-20250809-WA0027.jpg"/>
-<img alt="" src="IMG-20250809-WA0029.jpg"/>
-<img alt="" src="IMG-20250809-WA0030.jpg"/>
-<img alt="" src="IMG-20250809-WA0031.jpg"/>
-<img alt="" src="IMG-20250809-WA0032.jpg"/>
-<img alt="" src="IMG-20250810-WA0040.jpg"/>
-<img alt="" src="IMG-20250810-WA0025.jpg"/>
-<img alt="" src="IMG-20250810-WA0026.jpg"/>
-<img alt="" src="IMG-20250810-WA0027.jpg"/>
-<img alt="" src="IMG-20250810-WA0029.jpg"/>
-<img alt="" src="IMG-20250810-WA00340.jpg"/>
-</div>
+  <div class="sobre-noah">
+    <img src="IMG-20250610-WA0030.jpg" alt="Noah sorrindo"/>
+    <div class="texto-noah">
+      <p><strong>Com apenas 1 aninho, Noah já conquista corações com seu carisma, sorriso encantador e muito estilo.</strong></p>
+      <p>Seu perfil foi criado para inspirar famílias que valorizam moda infantil moderna, confortável e cheia de personalidade.</p>
+      <p>Cada publicação transmite alegria, autenticidade e a essência da infância, transformando momentos simples em grandes inspirações para marcas e famílias.</p>
+    </div>
+  </div>
 </section>
-<script>
-  const featuredPhoto = document.getElementById('featured-photo-main');
-  const carouselImages = document.querySelectorAll('#photo-carousel img');
-  const leftArrow = document.querySelector('.arrow-left');
-  const rightArrow = document.querySelector('.arrow-right');
-  let currentIndex = Array.from(carouselImages).findIndex(img => img.src.includes('IMG-20250809-WA0031.jpg'));
 
-  function updateFeaturedPhoto(index) {
-    featuredPhoto.style.opacity = '0';
-    setTimeout(() => {
-      featuredPhoto.src = carouselImages[index].src;
-      document.querySelector('#photo-carousel img.active')?.classList.remove('active');
-      carouselImages[index].classList.add('active');
-      featuredPhoto.style.opacity = '1';
-    }, 250);
-  }
-
-  carouselImages.forEach((img, index) => {
-    if (index === currentIndex) img.classList.add('active');
-    img.addEventListener('click', () => {
-      currentIndex = index;
-      updateFeaturedPhoto(index);
-    });
-  });
-
-  leftArrow.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
-    updateFeaturedPhoto(currentIndex);
-  });
-
-  rightArrow.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % carouselImages.length;
-    updateFeaturedPhoto(currentIndex);
-  });
-</script>
-<!-- Seções Finais -->
-<!-- Informações Básicas -->
-<section class="container animate-fadeInUp">
-<h2>Informações Básicas</h2>
-<ul>
-<li><strong>Idade:</strong> 1 ano e 2 meses</li>
-<li><strong>Cidade:</strong> Gaspar – SC</li>
-<li><strong>Altura:</strong> 77 cm</li>
-<li><strong>Peso:</strong> 10 kg</li>
-<li><strong>Tamanho de roupa:</strong> 1</li>
-<li><strong>Tamanho de calçado:</strong> 19</li>
-</ul>
-</section>
-<!-- Estilo & Parcerias -->
-<section class="container animate-fadeInUp">
-<h2>Estilo &amp; Parcerias</h2>
-<p>Alegre, espontâneo e cheio de personalidade, o Noah transmite leveza, autenticidade e carinho em cada momento.
-   Ainda no começo da sua história, já espalha sorrisos e cria conexões genuínas.</p>
-<h3>O que oferecemos para marcas</h3>
-<ul>
-<li>Ensaios fotográficos com roupas, óculos e calçados infantis</li>
-<li>Posts e stories no Instagram e TikTok</li>
-<li>Divulgação criativa, focada em famílias e público infantil</li>
-<li>Parcerias e permutas com marcas</li>
-</ul>
-<h3>Por que o Noah é o parceiro ideal?</h3>
-<ul>
-<li>Mini influencer mirim em crescimento constante</li>
-<li>Carisma natural e espontaneidade</li>
-<li>Profissionalismo e confiança, com gestão da ADM e suporte de agência</li>
-<li>Produção de qualidade, com fotos e vídeos que valorizam cada detalhe</li>
-<li>Versatilidade para diferentes estilos e marcas</li>
-<li>Alto potencial de engajamento com público familiar</li>
-</ul>
-</section>
-<!-- Contato -->
-<section class="container animate-fadeInUp">
-<h2>Contato</h2>
-<div class="contact-info">
-<p>📩 <strong>E-mail:</strong> <a href="mailto:amanda1545@hotmail.com">amanda1545@hotmail.com</a></p>
-<p>📱 <strong>WhatsApp:</strong><a href="https://wa.me/5547984247430" target="_blank"> (47) 98424-7430</a>
-<p>📷 <strong>Instagram:</strong> <a href="https://instagram.com/stylobabynoah" target="_blank">@stylobabynoah</a></p>
-<p>🎥 <strong>TikTok:</strong> <a href="https://tiktok.com/@stylodonoah" target="_blank">@stylodonoah</a></p>
-</div>
-</section>
+<footer>© 2025 - Media Kit Noah</footer>
 </body>
 </html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Noah - Dados</title>
+<style>
+/* ---------- BACKGROUND ---------- */
+:root{--sky-top:#fff8ff;--sky-mid:#eafaff;--sky-bottom:#fff6fb;}
+html,body{margin:0;padding:0;font-family:'Nunito',sans-serif;overflow-x:hidden;height:100%;}
+#bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,var(--sky-top) 0%,var(--sky-mid) 55%,var(--sky-bottom) 100%);overflow:hidden;}
+#sun{position:absolute;top:8%;right:12%;width:150px;height:150px;background:url('sun-69.gif') no-repeat center/contain;z-index:3;}
+.cloud{position:absolute;background-size:contain;background-repeat:no-repeat;animation:moveClouds 60s linear infinite;opacity:0.85;}
+.cloud.c1{top:20%;left:-200px;width:300px;height:150px;background-image:url('nuvem.png');animation-duration:70s;}
+.cloud.c2{top:40%;left:-250px;width:400px;height:180px;background-image:url('nuvem.png');animation-duration:80s;}
+.cloud.c3{top:60%;left:-300px;width:350px;height:160px;background-image:url('nuvem.png');animation-duration:90s;}
+@keyframes moveClouds{0%{transform:translateX(0)}100%{transform:translateX(120vw)}}
+#rainbow{position:absolute;left:50%;transform:translateX(-50%);bottom:-12%;width:140%;}
+
+/* ---------- MENU ---------- */
+header{position:sticky;top:0;z-index:999;padding:15px 0;text-align:center;background:transparent;}
+.menu-arcoiris a{display:inline-block;padding:10px 18px;margin:0 8px;border-radius:12px;font-weight:bold;text-decoration:none;color:white;position:relative;overflow:hidden;z-index:0;transition:0.3s;}
+.menu-arcoiris a::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,#ff4d6d,#ff9933,#ffee33,#33ff77,#33bbff,#cc66ff,#ff4d6d);background-size:400% 400%;filter:blur(10px);z-index:-2;animation:rainbowAnim 10s linear infinite;border-radius:15px;opacity:0.7;}
+.menu-arcoiris a::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);border-radius:12px;z-index:-1;transition:0.3s;}
+.menu-arcoiris a:hover{color:#fff;}
+.menu-arcoiris a:hover::after{background:rgba(0,0,0,0);}
+.menu-arcoiris a.active{color:#fff;box-shadow:0 0 10px rgba(255,255,255,0.8);}
+@keyframes rainbowAnim{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
+/* ---------- CONTAINER ---------- */
+.container{position:relative;z-index:1;max-width:900px;margin:100px auto;padding:30px;background:rgba(255,255,255,0.95);border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+h1,h2{font-size:2rem;margin-bottom:20px;text-align:center;}
+p,li{font-size:1.1rem;line-height:1.6;color:#555;margin-bottom:10px;}
+ul{list-style:none;padding-left:0;}
+ul li::before{content:"• ";color:#ff4d6d;font-weight:bold;}
+</style>
+</head>
+<body>
+
+<div id="bg">
+  <div id="sun"></div>
+  <svg id="rainbow" viewBox="0 0 1000 350" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs><filter id="gblur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" result="b"/><feBlend in="SourceGraphic" in2="b" mode="screen"/></filter></defs>
+    <g fill="none" filter="url(#gblur)" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,40)">
+      <path d="M40 320 Q500 -40 960 320" stroke="#ff4d6d" stroke-width="72"/>
+      <path d="M80 320 Q500 -10 920 320" stroke="#ff9933" stroke-width="62"/>
+      <path d="M120 320 Q500 20 880 320" stroke="#ffee33" stroke-width="54"/>
+      <path d="M160 320 Q500 60 840 320" stroke="#33ff77" stroke-width="46"/>
+      <path d="M200 320 Q500 90 800 320" stroke="#33bbff" stroke-width="38"/>
+      <path d="M240 320 Q500 120 760 320" stroke="#cc66ff" stroke-width="30"/>
+    </g>
+  </svg>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+</div>
+
+<header>
+  <nav class="menu-arcoiris">
+    <a href="index.html">Home</a>
+    <a href="quem.html">Quem é Noah</a>
+    <a href="parcerias.html">Parcerias</a>
+    <a href="portfolio.html">Portfólio</a>
+    <a href="dados.html" class="active">Dados</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+</header>
+
+<section class="container">
+  <h2>Informações Básicas</h2>
+  <ul>
+    <li><strong>Idade:</strong> 1 ano e 2 meses</li>
+    <li><strong>Cidade:</strong> Gaspar – SC</li>
+    <li><strong>Altura:</strong> 77 cm</li>
+    <li><strong>Peso:</strong> 10 kg</li>
+    <li><strong>Tamanho de roupa:</strong> 1</li>
+    <li><strong>Tamanho de calçado:</strong> 19</li>
+  </ul>
+</section>
+
+<footer>© 2025 - Media Kit Noah</footer>
+
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfólio Noah - Bebê Arco-Íris</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* ===== FUNDO ANIMADO ===== */
+  :root {
+    --sky-top: #fff8ff;
+    --sky-mid: #eafaff;
+    --sky-bottom: #fff6fb;
+  }
+
+  #bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-bottom) 100%);
+    overflow: hidden;
+  }
+
+  #sun {
+    position: absolute;
+    top: 8%;
+    right: 12%;
+    width: 150px;
+    height: 150px;
+    background: url('sun-69.gif') no-repeat center/contain;
+    z-index: 3;
+  }
+
+  .cloud {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: moveClouds linear infinite;
+    opacity: 0.85;
+  }
+  .cloud.c1 { top: 20%; left: -200px; width: 300px; height: 150px; background-image: url('nuvem.png'); animation-duration: 70s; }
+  .cloud.c2 { top: 40%; left: -250px; width: 400px; height: 180px; background-image: url('nuvem.png'); animation-duration: 80s; }
+  .cloud.c3 { top: 60%; left: -300px; width: 350px; height: 160px; background-image: url('nuvem.png'); animation-duration: 90s; }
+
+  @keyframes moveClouds { 0% { transform: translateX(0) } 100% { transform: translateX(120vw) } }
+
+  #rainbow {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12%;
+    width: 140%;
+  }
+
+  /* ===== MENU ARCO-ÍRIS ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding: 15px 0;
+    text-align: center;
+    background: transparent;
+  }
+
+  .menu-arcoiris a {
+    display: inline-block;
+    padding: 10px 18px;
+    margin: 0 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    transition: 0.3s;
+  }
+
+  .menu-arcoiris a::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,#ff4d6d,#ff9933,#ffee33,#33ff77,#33bbff,#cc66ff,#ff4d6d);
+    background-size: 400% 400%;
+    filter: blur(10px);
+    z-index: -2;
+    animation: rainbowAnim 10s linear infinite;
+    border-radius: 15px;
+    opacity: 0.7;
+  }
+
+  .menu-arcoiris a::after {
+    content:'';
+    position:absolute;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.3);
+    border-radius: 12px;
+    z-index:-1;
+    transition:0.3s;
+  }
+
+  .menu-arcoiris a:hover { color:#fff; }
+  .menu-arcoiris a:hover::after { background: rgba(0,0,0,0); }
+  .menu-arcoiris a.active { color:#fff; box-shadow: 0 0 10px rgba(255,255,255,0.8); }
+
+  @keyframes rainbowAnim {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
+  /* ===== CONTAINER PORTFÓLIO ===== */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 120px auto 40px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  h2 {
+    font-weight: 700;
+    color: #000;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+      to right,
+      #a7d8f0,
+      #ff9aa2,
+      #ffb347,
+      #fff176,
+      #77dd77,
+      #84b6f4,
+      #cba6f7
+    );
+    background-size: 400% 100%;
+    animation: rainbowSlide 8.64s linear infinite;
+    border-radius: 2px;
+  }
+
+  /* Fotos e carrossel */
+  .featured-container { position: relative; width: 80%; margin: auto; text-align: center; }
+  .featured-photo {
+    width: 100%;
+    max-width: 324px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+    border: 2.4px solid transparent;
+    background: linear-gradient(
+      to right,
+      #a7d8f0,
+      #ff9aa2,
+      #ffb347,
+      #fff176,
+      #77dd77,
+      #84b6f4,
+      #cba6f7
+    ) border-box;
+    background-size: 400% 100%;
+    animation: rainbowSlide 8.64s linear infinite;
+  }
+
+  .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: rgba(0,0,0,0.5);
+    background: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    padding: 5px 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .nav-arrow:hover { background: rgba(255,255,255,0.9); }
+  .arrow-left { left: -40px; }
+  .arrow-right { right: -40px; }
+
+  .carousel-wrapper {
+    overflow-x: auto;
+    display: flex;
+    gap: 10px;
+    padding-bottom: 5px;
+    scroll-behavior: smooth;
+  }
+  .carousel-wrapper img {
+    height: 108px;
+    border-radius: 10px;
+    cursor: pointer;
+    object-fit: cover;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, border 0.3s ease, opacity 0.5s ease;
+  }
+  .carousel-wrapper img:hover { transform: scale(1.05); }
+  .carousel-wrapper img.active {
+    border: 3px solid rgba(255, 204, 128, 0.8);
+    transform: scale(1.08);
+  }
+
+  @media (max-width: 768px) {
+    .featured-container { width: 90%; }
+    .featured-photo { max-width: 270px; }
+    .carousel-wrapper img { height: 81px; }
+    .nav-arrow { font-size: 1.5rem; padding: 4px 8px; }
+    .arrow-left { left: -25px; }
+    .arrow-right { right: -25px; }
+  }
+
+  @keyframes rainbowSlide {0%{background-position:0% 50%;}100%{background-position:400% 50%;}}
+</style>
+</head>
+<body>
+
+<!-- Fundo animado -->
+<div id="bg">
+  <div id="sun"></div>
+  <svg id="rainbow" viewBox="0 0 1000 350" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <filter id="gblur" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="8" result="b"/>
+        <feBlend in="SourceGraphic" in2="b" mode="screen"/>
+      </filter>
+    </defs>
+    <g fill="none" filter="url(#gblur)" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,40)">
+      <path d="M40 320 Q500 -40 960 320" stroke="#ff4d6d" stroke-width="72"/>
+      <path d="M80 320 Q500 -10 920 320" stroke="#ff9933" stroke-width="62"/>
+      <path d="M120 320 Q500 20 880 320" stroke="#ffee33" stroke-width="54"/>
+      <path d="M160 320 Q500 60 840 320" stroke="#33ff77" stroke-width="46"/>
+      <path d="M200 320 Q500 90 800 320" stroke="#33bbff" stroke-width="38"/>
+      <path d="M240 320 Q500 120 760 320" stroke="#cc66ff" stroke-width="30"/>
+    </g>
+  </svg>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+</div>
+
+<!-- Menu -->
+<header>
+  <nav class="menu-arcoiris">
+    <a href="index.html">Home</a>
+    <a href="quem.html">Quem é Noah</a>
+    <a href="parcerias.html">Parcerias</a>
+    <a href="portfolio.html" class="active">Portfólio</a>
+    <a href="dados.html">Dados</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+</header>
+
+<!-- Conteúdo -->
+<section class="container">
+  <div class="featured-container">
+    <span class="nav-arrow arrow-left">&#10094;</span>
+    <img src="IMG-20250809-WA0031.jpg" alt="Foto destaque" class="featured-photo" id="featured-photo-main" />
+    <span class="nav-arrow arrow-right">&#10095;</span>
+  </div>
+
+  <div class="carousel-wrapper" id="photo-carousel">
+    <img src="IMG-20250504-WA0013.jpg" alt="" />
+    <img src="IMG-20250610-WA0030.jpg" alt="" />
+    <img src="IMG-20250610-WA0032.jpg" alt="" />
+    <img src="IMG-20250806-WA0015.jpg" alt="" />
+    <img src="IMG-20250809-WA0027.jpg" alt="" />
+    <img src="IMG-20250809-WA0029.jpg" alt="" />
+    <img src="IMG-20250809-WA0030.jpg" alt="" />
+    <img src="IMG-20250809-WA0031.jpg" alt="" />
+    <img src="IMG-20250809-WA0032.jpg" alt="" />
+    <img src="IMG-20250809-WA0033.jpg" alt="" />
+    <img src="IMG-20250810-WA0025.jpg" alt="" />
+    <img src="IMG-20250810-WA0026.jpg" alt="" />
+    <img src="IMG-20250810-WA0027.jpg" alt="" />
+    <img src="IMG-20250810-WA0029.jpg" alt="" />
+    <img src="IMG-20250810-WA0033.jpg" alt="" />
+  </div>
+</section>
+
+<script>
+  const featuredPhoto = document.getElementById('featured-photo-main');
+  const carouselImages = document.querySelectorAll('#photo-carousel img');
+  const leftArrow = document.querySelector('.arrow-left');
+  const rightArrow = document.querySelector('.arrow-right');
+  let currentIndex = Array.from(carouselImages).findIndex(img => img.src.includes('IMG-20250809-WA0031.jpg'));
+
+  function updateFeaturedPhoto(index) {
+    featuredPhoto.style.opacity = '0';
+    setTimeout(() => {
+      featuredPhoto.src = carouselImages[index].src;
+      document.querySelector('#photo-carousel img.active')?.classList.remove('active');
+      carouselImages[index].classList.add('active');
+      featuredPhoto.style.opacity = '1';
+    }, 250);
+  }
+
+  carouselImages.forEach((img, index) => {
+    if (index === currentIndex) img.classList.add('active');
+    img.addEventListener('click', () => {
+      currentIndex = index;
+      updateFeaturedPhoto(index);
+    });
+  });
+
+  leftArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+    updateFeaturedPhoto(currentIndex);
+  });
+
+  rightArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % carouselImages.length;
+    updateFeaturedPhoto(currentIndex);
+  });
+</script>
+
+</body>
+</html>
