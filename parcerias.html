@@ -9,7 +9,7 @@
 :root{--sky-top:#fff8ff;--sky-mid:#eafaff;--sky-bottom:#fff6fb;}
 html,body{margin:0;padding:0;font-family:'Nunito',sans-serif;overflow-x:hidden;height:100%;}
 #bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,var(--sky-top) 0%,var(--sky-mid) 55%,var(--sky-bottom) 100%);overflow:hidden;}
-#sun{position:absolute;top:8%;right:12%;width:150px;height:150px;background:url('sun-69.gif') no-repeat center/contain;z-index:3;}
+#sun{position:absolute;top:8%;right:6%;width:150px;height:150px;background:url('sun-69.gif') no-repeat center/contain;z-index:3;}
 .cloud{position:absolute;background-size:contain;background-repeat:no-repeat;animation:moveClouds 60s linear infinite;opacity:0.85;}
 .cloud.c1{top:20%;left:-200px;width:300px;height:150px;background-image:url('nuvem.png');animation-duration:70s;}
 .cloud.c2{top:40%;left:-250px;width:400px;height:180px;background-image:url('nuvem.png');animation-duration:80s;}
@@ -28,7 +28,7 @@ header{position:sticky;top:0;z-index:999;padding:15px 0;text-align:center;backgr
 @keyframes rainbowAnim{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
 /* ---------- CONTAINER ---------- */
-section.container{max-width:900px;margin:100px auto;padding:30px;background:rgba(255,255,255,0.95);border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.1);text-align:center;}
+section.container{max-width:900px;margin:5px auto;padding:30px;background:rgba(255,255,255,0.95);border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.1);text-align:center;}
 section.container h2{font-size:2rem;margin-bottom:30px;font-weight:700;color:#89CFF0;position:relative;padding-bottom:8px;}
 section.container h2::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:100%;background:linear-gradient(to right,#a7d8f0,#ff9aa2,#ffb347,#fff176,#77dd77,#84b6f4,#cba6f7);background-size:400% 100%;animation:rainbowSlide 8s linear infinite;border-radius:2px;}
 @keyframes rainbowSlide{0%{background-position:0% 50%;}100%{background-position:400% 50%;}}
@@ -106,9 +106,9 @@ section.container h2::after{content:"";position:absolute;left:0;bottom:0;height:
 
   <h2>Métricas de Desempenho</h2>
   <div class="metricas-grid">
-    <div class="card-metrica"><div class="icone">👀</div><h3>+25K</h3><p>Visualizações últimos 30 dias</p></div>
+    <div class="card-metrica"><div class="icone">👀</div><h3>+40K</h3><p>Visualizações últimos 30 dias</p></div>
     <div class="card-metrica"><div class="icone">❤️</div><h3>4.2%</h3><p>Taxa de Engajamento</p></div>
-    <div class="card-metrica"><div class="icone">📈</div><h3>+10K</h3><p>Alcance de Contas</p></div>
+    <div class="card-metrica"><div class="icone">📈</div><h3>+15K</h3><p>Alcance de Contas</p></div>
     <div class="card-metrica"><div class="icone">👤</div><h3>1.2K</h3><p>Seguidores Atuais</p></div>
   </div>
 

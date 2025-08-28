@@ -5,11 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Noah - Dados</title>
 <style>
+/* ---------- TÍTULOS EM AZUL ---------- */
+h1, h2, h3 {
+  color: #89CFF0;
+}
+
+/* deixar o <strong> no mesmo tom cinza do texto */
+strong {
+  color: #555;
+}
+
+
 /* ---------- BACKGROUND ---------- */
 :root{--sky-top:#fff8ff;--sky-mid:#eafaff;--sky-bottom:#fff6fb;}
 html,body{margin:0;padding:0;font-family:'Nunito',sans-serif;overflow-x:hidden;height:100%;}
 #bg{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,var(--sky-top) 0%,var(--sky-mid) 55%,var(--sky-bottom) 100%);overflow:hidden;}
-#sun{position:absolute;top:8%;right:12%;width:150px;height:150px;background:url('sun-69.gif') no-repeat center/contain;z-index:3;}
+#sun{position:absolute;top:8%;right:8%;width:150px;height:150px;background:url('sun-69.gif') no-repeat center/contain;z-index:3;}
 .cloud{position:absolute;background-size:contain;background-repeat:no-repeat;animation:moveClouds 60s linear infinite;opacity:0.85;}
 .cloud.c1{top:20%;left:-200px;width:300px;height:150px;background-image:url('nuvem.png');animation-duration:70s;}
 .cloud.c2{top:40%;left:-250px;width:400px;height:180px;background-image:url('nuvem.png');animation-duration:80s;}
@@ -28,7 +39,7 @@ header{position:sticky;top:0;z-index:999;padding:15px 0;text-align:center;backgr
 @keyframes rainbowAnim{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
 /* ---------- CONTAINER ---------- */
-.container{position:relative;z-index:1;max-width:900px;margin:100px auto;padding:30px;background:rgba(255,255,255,0.95);border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+.container{position:relative;z-index:1;max-width:900px;margin:50px auto;padding:30px;background:rgba(255,255,255,0.95);border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
 h1,h2{font-size:2rem;margin-bottom:20px;text-align:center;}
 p,li{font-size:1.1rem;line-height:1.6;color:#555;margin-bottom:10px;}
 ul{list-style:none;padding-left:0;}
@@ -69,7 +80,7 @@ ul li::before{content:"• ";color:#ff4d6d;font-weight:bold;}
 <section class="container">
   <h2>Informações Básicas</h2>
   <ul>
-    <li><strong>Idade:</strong> 1 ano e 2 meses</li>
+    <li><strong>Data de Nascimento:</strong> 04/06/2024</li>
     <li><strong>Cidade:</strong> Gaspar – SC</li>
     <li><strong>Altura:</strong> 77 cm</li>
     <li><strong>Peso:</strong> 10 kg</li>
